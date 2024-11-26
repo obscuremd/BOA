@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.roboto {
+  font-family: "Roboto", serif;
+}
+
+.connections {
+  font-family: 'Connections';
+  src: url('./assets/Connections.otf') format('opentype');
+}
+                                                
+                

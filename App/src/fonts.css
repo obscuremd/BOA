@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Connections';
+    src: url('./assets/Connections.otf') format('opentype');
+  }
+  
+  .roboto {
+    font-family: "Roboto", serif;
+  }
+  
