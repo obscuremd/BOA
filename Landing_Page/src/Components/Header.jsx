@@ -31,7 +31,7 @@ export default function Header({ setActive }) {
         </div>
         <div className="relative flex w-full gap-2 md:w-max">
 
-          <a href="">
+          <a href="https://boa-main.vercel.app/" target="_blank" rel="noopener noreferrer">
             <Button
               size="sm"
               color="light-blue"
