@@ -1,16 +1,13 @@
-import Login from '../../Component/Login'
 import Card from '../../Component/Card'
 import { IsMobile } from '../../Exports/Constatants'
-import { SignIn, SignUp } from '@clerk/clerk-react'
+import { SignIn } from '@clerk/clerk-react'
 import Logo from '../../assets/boaBlack.png'
 
 const Auth = () => {
   return (
     <div className='flex flex-col md:flex-row gap-5 p-5 items-center justify-center w-full min-h-screen'>
-        {/* <Login/> */}
         <img className='w-96' src={Logo} alt="" />
         <SignIn/>
-        {/* <SignUp/> */}
         {IsMobile && 
         <div className='flex flex-col gap-5 items-center'>
             <p className='text-[#005AC4]'>My Balance</p>
