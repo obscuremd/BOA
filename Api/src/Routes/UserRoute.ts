@@ -27,9 +27,9 @@ router.get('/:id', async (req, res) => {
 })
 
 // find by email
-router.get('/email/:email', async (req, res) => {
+router.get('/account/:account', async (req, res) => {
     try {
-        const user = await User.findOne({email: req.params.email});
+        const user = await User.findOne({account_number: req.params.account});
         res.status(200).json(user);
     } catch (error) {
         res.status(500).json(error);

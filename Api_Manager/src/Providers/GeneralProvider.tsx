@@ -1,16 +1,11 @@
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 
-interface AuthTypes{
-    from: Array<string>, 
-    setFrom :  React.Dispatch<React.SetStateAction<Array<string>>>,
-    to: Array<string>, 
-    setTo : React.Dispatch<React.SetStateAction<Array<string>>>, 
-    amount: string, 
-    setAmount: React.Dispatch<React.SetStateAction<string>>
+interface GeneralTypes{
+
 }
 
 
-const GeneralContext = createContext<AuthTypes | undefined>(undefined)
+const GeneralContext = createContext<GeneralTypes | undefined>(undefined)
 
 export default function GeneralProvider({children}:PropsWithChildren) {
 

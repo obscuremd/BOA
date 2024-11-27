@@ -1,14 +1,48 @@
+import { useClerk } from "@clerk/clerk-react"
+import { useState } from "react"
 
 const Inputs = () => {
+
+    const {user} = useClerk()
+    const [state, setState] = useState(0)
+
   return (
-    <div className="w-full flex flex-col gap-10">
-        <div className="flex gap-5 w-full">
-            <InputsOne/>
-            <InputsTwo/>
+    <div className="w-full flex flex-col gap-5">
+        <div className="flex items-center gap-5">
+            <img src="https://images.unsplash.com/photo-1683231097406-b02b25e92c0d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJ1aXNuZXNzfGVufDB8fDB8fHww" alt="" className="w-20 h-20 rounded-full"/>
+            <div>
+                <p>Account Number: {user?.username}</p>
+                <p>Full Name: {user?.username}</p>
+            </div>
         </div>
-        <button className="btn btn-neutral w-full">
-            Update Account
-        </button>
+        <div>
+            <div className="join">
+                <button onClick={()=>setState(0)} className="btn join-item">Edit Profile</button>
+                <button onClick={()=>setState(1)} className="btn join-item">Add History</button>
+            </div>
+        </div>
+        {
+            state === 0 &&
+            <>
+                <div className="flex gap-5 w-full">
+                    <InputsOne/>
+                    <InputsTwo/>
+                </div>
+                <button className="btn btn-neutral w-full">
+                    Update Account
+                </button>
+            </>
+        }
+        {
+            state === 1 &&
+            <>
+                <div className="flex gap-5 w-full">
+                </div>
+                <button className="btn btn-neutral w-full">
+                    Change History
+                </button>
+            </>
+        }
     </div>
 
   )
