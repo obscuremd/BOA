@@ -1,10 +1,12 @@
 import { useClerk } from "@clerk/clerk-react"
 import { useState } from "react"
+import { useGen } from "../Providers/GeneralProvider"
 
 const Inputs = () => {
 
     const {user} = useClerk()
     const [state, setState] = useState(0)
+    const { userData } = useGen()
 
   return (
     <div className="w-full flex flex-col gap-5">
@@ -49,6 +51,9 @@ const Inputs = () => {
 }
 
 const InputsOne =()=>{
+
+    const { userData } = useGen()
+
     return(
         <div className='flex flex-col gap-5 w-full'>
             <label className="form-control w-full max-w-xs">
@@ -57,26 +62,26 @@ const InputsOne =()=>{
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Full name
-                <input type="text" className="grow" placeholder="Daisy" />
+                <input type="text" className="grow" placeholder={userData?.full_name} />
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Email
-                <input type="text" className="grow" placeholder="daisy@site.com" />
+                <input type="text" className="grow" placeholder={userData?.email} />
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Phone Number
-                <input type="text" className="grow" placeholder="123456789" />
+                <input type="text" className="grow" placeholder={userData?.phone_number} />
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Occupation
-                <input type="text" className="grow" placeholder="example - doctor" />
+                <input type="text" className="grow" placeholder={userData?.occupation} />
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Date Of Birth
-                <input type="text" className="grow" placeholder="DD-MM-YYYY" />
+                <input type="text" className="grow" placeholder={`DD-MM-YYYY - ${userData?.date_of_birth}`} />
             </label>
             <select className="select select-bordered w-full max-w-xs">
-                <option disabled selected>Marital Status</option>
+                <option disabled selected>{userData?.marital_status || 'Marital Status'}</option>
                 <option>Single</option>
                 <option>Married</option>
                 <option>Divorced</option>
@@ -86,6 +91,9 @@ const InputsOne =()=>{
 }
 
 const InputsTwo =()=>{
+
+    const { userData } = useGen()
+
     return(
         <div className='flex flex-col gap-5 w-full'>
             <label className="input input-bordered flex items-center gap-2">
@@ -93,20 +101,20 @@ const InputsTwo =()=>{
                 <input type="text" className="grow" placeholder="Daisy" />
             </label>
             <select className="select select-bordered w-full max-w-xs">
-                <option disabled selected>Gender</option>
+                <option disabled selected>{userData?.gender || 'Gender'}</option>
                 <option>Male</option>
                 <option>Female</option>
                 <option>Prefer Not to Say</option>
             </select>
             <select className="select select-bordered w-full max-w-xs">
-                <option disabled selected>Account Type</option>
+                <option disabled selected>{userData?.account_type || 'Account Type'}</option>
                 <option>Savings</option>
                 <option>Checkings</option>
                 <option>Loan</option>
             </select>
             <label className="input input-bordered flex items-center gap-2">
                 Registration Date
-                <input type="text" className="grow" placeholder="DD-MM-YYYY" />
+                <input type="text" className="grow" placeholder={`DD-MM-YYYY - ${userData?.registration_date}`} />
             </label>
             <label className="input input-bordered flex items-center gap-2">
                 Total Balance

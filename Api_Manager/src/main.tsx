@@ -4,7 +4,6 @@ import './index.css'
 import App from './App.tsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { app } from './firebaseConfig.ts'
-import AuthProvider from './Providers/GeneralProvider.tsx'
 import GeneralProvider from './Providers/GeneralProvider.tsx'
 app
 
@@ -17,13 +16,11 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-      <AuthProvider>
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
           <GeneralProvider>
             <App />
           </GeneralProvider>
         </ClerkProvider>
-      </AuthProvider>
   </StrictMode>,
 )
 

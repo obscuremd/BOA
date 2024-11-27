@@ -45,7 +45,7 @@ export default function Hero() {
               className="flex justify-center gap-2"
             >
               <a
-                href="https://boa-tan.vercel.app/"
+                href="https://boa-main.vercel.app/"
                 className="flex"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -100,7 +100,7 @@ export default function Hero() {
               className="flex gap-2"
             >
               <a
-                href="https://boa-tan.vercel.app/"
+                href="https://boa-main.vercel.app/"
                 className="flex"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -155,7 +155,7 @@ export default function Hero() {
               className="flex gap-2"
             >
               <a
-                href="https://boa-tan.vercel.app/"
+                href="https://boa-main.vercel.app/"
                 className="flex"
                 target="_blank"
                 rel="noopener noreferrer"
