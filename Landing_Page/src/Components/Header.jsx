@@ -1,54 +1,103 @@
+import React from "react";
 import {
   Navbar,
+  Collapse,
   Typography,
   IconButton,
-  Button,
 } from "@material-tailwind/react";
-import { BellIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function Header({ setActive }) {
+function NavList() {
   return (
-    <Navbar
-      variant="gradient"
-      className="mx-auto w-full mt-5 from-blue-gray-900 to-blue-gray-800 px-4 py-3"
-    >
-      <div className="flex flex-wrap items-center justify-between gap-y-4">
+    <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <a href="#about-us" className="flex items-center hover:text-blue-500 transition-colors">
+          About Us
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <a href="#our-services" className="flex items-center hover:text-blue-500 transition-colors">
+          Our Services
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <a href="#benefits" className="flex items-center hover:text-blue-500 transition-colors">
+          Benefits
+        </a>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-medium"
+      >
+        <a href="#get-started" className="flex items-center hover:text-blue-500 transition-colors">
+          Get Started
+        </a>
+      </Typography>
+    </ul>
+  );
+}
+
+export default function NavbarSimple() {
+  const [openNav, setOpenNav] = React.useState(false);
+
+  const handleWindowResize = () =>
+    window.innerWidth >= 960 && setOpenNav(false);
+
+  React.useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  return (
+    <Navbar className="sticky top-0 z-50 mx-auto px-6 py-3">
+      <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
-          variant="h5"
-          className="mr-4 ml-2 cursor-pointer py-1.5"
+          variant="h2"
+          className="mr-4 cursor-pointer py-1.5"
         >
-          Eagle County Bank
+          EagleCounty Bank
         </Typography>
-        <div className="ml-auto flex gap-1 md:mr-4">
-          <IconButton variant="text" >
-            <Cog6ToothIcon className="h-4 w-4" />
-          </IconButton>
-          <IconButton variant="text" >
-            <BellIcon className="h-4 w-4" />
-          </IconButton>
+        <div className="hidden lg:block">
+          <NavList />
         </div>
-        <div className="relative flex w-full gap-2 md:w-max">
-
-          <a href="https://boa-main.vercel.app/" target="_blank" rel="noopener noreferrer">
-            <Button
-              size="sm"
-              color="light-blue"
-              className="md:w-fit w-full"
-            >
-              Login
-            </Button>
-          </a>
-          <Button
-            size="sm"
-            className="md:w-fit w-full"
-            onClick={() => setActive(1)}
-          >
-            Sign Up
-          </Button>
-        </div>
+        <IconButton
+          variant="text"
+          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          ripple={false}
+          onClick={() => setOpenNav(!openNav)}
+        >
+          {openNav ? (
+            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
+          ) : (
+            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
+          )}
+        </IconButton>
       </div>
+      <Collapse open={openNav}>
+        <NavList />
+      </Collapse>
     </Navbar>
   );
 }

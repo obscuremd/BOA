@@ -1,26 +1,173 @@
-import { Button } from "@material-tailwind/react";
+import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { motion } from "motion/react";
 
 export default function Hero() {
   return (
-    <div className="p-2 md:p-5">
-      <div className="relative grid h-[80vh] md:h-[35rem] w-full flex-col items-end justify-center overflow-hidden rounded-lg bg-white">
-        <div className="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1552960562-daf630e9278b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')] bg-cover bg-center">
-          <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"></div>
-        </div>
-        <div className="relative w-full text-center justify-center p-6 px-6 py-14 md:px-12 flex flex-col gap-2">
-          <h2 className=" text-lg text-white"> Welcome to Eagle Count Bank </h2>
-          <h2 className=" text-3xl font-medium text-white"> Your Bank Your Way </h2>
-          <h2 className=" text-lg text-white">Eagle County Bank: Fast, easy banking—manage accounts, transfer funds, and get support hassle-free!</h2>
-          {/* <div className="flex justify-center gap-5 w-full">
-            <Button variant="gradient" color="blue" className="flex items-center gap-3 md:text-xl">
-              Login
-            </Button>
-            <Button variant="gradient" className="flex items-center gap-3 md:text-xl">
-              Sign Up
-            </Button>
-          </div> */}
+    <Carousel className="rounded-xl">
+      {/* Slide 1 */}
+      <div className="relative h-[80vh] md:h-full w-full">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1661371394983-42485fed3a58?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGFuZHNoYWtlfGVufDB8fDB8fHww"
+          alt="image 1"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="w-3/4 text-center md:w-2/4"
+          >
+            <Typography
+              variant="h1"
+              color="white"
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+              Welcome to Eagle County Bank
+            </Typography>
+            <motion.div
+              initial={{ opacity: 0, y: 200 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+            >
+              <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+              >
+                Fast, easy banking—manage accounts, transfer funds, and get support hassle-free!
+              </Typography>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 200 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+              className="flex justify-center gap-2"
+            >
+              <a
+                href="https://boa-tan.vercel.app/"
+                className="flex"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" color="white">
+                  Login
+                </Button>
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
-  )
+
+      {/* Slide 2 */}
+      <div className="relative h-[80vh] md:h-full w-full">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1683121132274-953b07f17ec7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YnVpc25lc3N8ZW58MHx8MHx8fDA%3D"
+          alt="image 2"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32"
+          >
+            <Typography
+              variant="h1"
+              color="white"
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+              Your Bank Your Way
+            </Typography>
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+            >
+              <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+              >
+                A bank that rewards you—experience flexibility and convenience with Eagle County.
+              </Typography>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+              className="flex gap-2"
+            >
+              <a
+                href="https://boa-tan.vercel.app/"
+                className="flex"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" color="white">
+                  Login
+                </Button>
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Slide 3 */}
+      <div className="relative h-[80vh] md:h-full w-full">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1661772661721-b16346fe5b0f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJ1aXNuZXNzfGVufDB8fDB8fHww"
+          alt="image 3"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 grid h-full w-full items-end bg-black/75">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32"
+          >
+            <Typography
+              variant="h1"
+              color="white"
+              className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+            >
+              Grow With Us
+            </Typography>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2 }}
+            >
+              <Typography
+                variant="lead"
+                color="white"
+                className="mb-12 opacity-80"
+              >
+                Empowering your financial journey with the tools and services to help you thrive.
+              </Typography>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5 }}
+              className="flex gap-2"
+            >
+              <a
+                href="https://boa-tan.vercel.app/"
+                className="flex"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" color="white">
+                  Login
+                </Button>
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </Carousel>
+  );
 }
