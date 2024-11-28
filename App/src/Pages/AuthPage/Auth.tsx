@@ -1,13 +1,15 @@
 import Card from '../../Component/Card'
 import { IsMobile } from '../../Exports/Constatants'
 import { SignIn } from '@clerk/clerk-react'
-import Logo from '../../assets/boaBlack.png'
+import Logo from '../../assets/original.svg'
 
 const Auth = () => {
   return (
     <div className='flex flex-col md:flex-row gap-5 p-5 items-center justify-center w-full min-h-screen'>
-        <img className='w-96' src={Logo} alt="" />
-        <SignIn/>
+        <div className=' flex flex-col items-center gap-5'>
+          <img className='w-44' src={Logo} alt="" />
+          <SignIn/>
+        </div>
         {IsMobile && 
         <div className='flex flex-col gap-5 items-center'>
             <p className='text-[#005AC4]'>My Balance</p>
