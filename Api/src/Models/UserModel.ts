@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, default:''},
     phone_number: { type: String, default:'' },
     occupation: { type: String, default:'' },
-    date_of_birth: { type: Date }, // Use `Date` for dates
+    date_of_birth: { type: String }, // Use `Date` for dates
     marital_status: { type: String, default:'' },
     gender: { type: String, default:'' },
     address: { type: String, default:'' },

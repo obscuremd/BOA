@@ -10,7 +10,7 @@ interface UserData {
   email: string;
   phone_number: string;
   occupation: string;
-  date_of_birth: Date;
+  date_of_birth: string;
   marital_status: string;
   gender: string;
   address: string;
