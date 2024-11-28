@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import logo from '../assets/original.svg'
 
 const LINKS = [
   {
@@ -22,9 +23,7 @@ export function FooterWithSocialLinks() {
     <footer className="relative w-full py-[4%] bg-[#F8FAFC]">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-          <Typography variant="h2" className="mb-6">
-            Eagle County Bank
-          </Typography>
+          <img src={logo} alt="" className="w-52 " />
           <div className="grid grid-cols-3 justify-between gap-4">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>

@@ -60,7 +60,7 @@ const Inputs = () => {
         />
         <div>
           <p>Account Number: {user?.username}</p>
-          <p>Full Name: {user?.username}</p>
+          <p>Full Name: {userData?.full_name}</p>
         </div>
       </div>
       <div>

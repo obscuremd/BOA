@@ -6,6 +6,9 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import logo from '../assets/logo.png';
+import logo2 from '../assets/original.svg';
+import { useMediaQuery } from "react-responsive";
 
 function NavList() {
   return (
@@ -68,17 +71,25 @@ export default function NavbarSimple() {
     };
   }, []);
 
+  const isMobile = useMediaQuery({ maxWidth: 960 });
   return (
     <Navbar className="sticky top-0 z-50 mx-auto px-6 py-3">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <Typography
-          as="a"
-          href="#"
-          variant="h2"
-          className="mr-4 cursor-pointer py-1.5"
-        >
-          EagleCounty Bank
-        </Typography>
+        <div className="flex gap-2 items-center">
+          {isMobile && <img src={logo2} alt="" className="w-32 " />}
+          {!isMobile &&
+            <>
+              <img src={logo} alt="" className="w-20 " />
+              <Typography
+                as="a"
+                href="#"
+                variant="h2"
+                className="mr-4 cursor-pointer py-1.5"
+              >
+                EagleCounty Bank
+              </Typography>
+            </>}
+        </div>
         <div className="hidden lg:block">
           <NavList />
         </div>
