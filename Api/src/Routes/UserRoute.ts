@@ -36,6 +36,16 @@ router.get('/account/:account', async (req, res) => {
     }
 })
 
+// find by email
+router.get('/', async (req, res) => {
+    try {
+        const user = await User.find();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
+
 // update user
 router.put('/:id', async(req, res) => {
     try {
