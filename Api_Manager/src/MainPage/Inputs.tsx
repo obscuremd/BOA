@@ -2,9 +2,11 @@ import { useClerk } from "@clerk/clerk-react";
 import { useState, ChangeEvent } from "react";
 import { useGen } from "../Providers/GeneralProvider";
 import axios from "axios";
+import Table from "../Ui/Table";
+import UploadImage from "../Ui/UploadImage";
 
 const Inputs = () => {
-  const { user, signOut } = useClerk();
+  const { signOut } = useClerk();
   const { userData, url } = useGen();
 
   const [state, setState] = useState(0);
@@ -53,17 +55,7 @@ const Inputs = () => {
   return (
     <div className="w-full flex flex-col gap-5">
       <div className="w-full flex justify-between">
-        <div className="flex items-center gap-5">
-          <img
-            src={userData?.profile_picture}
-            alt=""
-            className="w-20 h-20 rounded-full"
-          />
-          <div>
-            <p>Account Number: {user?.username}</p>
-            <p>Full Name: {userData?.full_name}</p>
-          </div>
-        </div>
+        <UploadImage/>
 
         <button className="btn btn-accent" onClick={()=>signOut()}>Log Out</button>
       </div>
@@ -82,10 +74,7 @@ const Inputs = () => {
           <div className="flex gap-5 w-full">
             {/* input 1 */}
             <div className="flex flex-col gap-5 w-full">
-                    <label className="form-control w-full max-w-xs">
-                        <span className="label-text">Select a Profile Picture</span>
-                        <input type="file" className="file-input file-input-bordered w-full max-w-xs" />
-                    </label>
+                    
                     <label className="input input-bordered flex items-center gap-2">
                         Full name
                         <input
@@ -237,6 +226,14 @@ const Inputs = () => {
         </button>
         </>
       )}
+
+      {
+        state === 1 && (
+          <>
+            <Table/>
+          </>
+        )
+      }
     </div>
   );
 };

@@ -6,8 +6,6 @@ import Form from './Form'
 
 const Menu = () => {
 
-
-
   return (
     <div className=' flex flex-col gap-2'>
         <Modal/>
@@ -72,10 +70,10 @@ const SignInModal =()=>{
       <div className='flex flex-col gap-5'>
         {
               users.map((item)=>(
-                <button className="btn w-full flex flex-col" onClick={showModal}>
-                  <p>{item.full_name}</p>
-                  <p>{item.account_number}</p>
-                  <p>{item.password}</p>
+                <button className="btn flex flex-col" onClick={showModal}>
+                  <p>full name: {item.full_name}</p>
+                  <p>account number: {item.account_number}</p>
+                  <p>password: {item.password}</p>
                 </button>
               ))
             }
