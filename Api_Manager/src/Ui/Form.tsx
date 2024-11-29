@@ -20,14 +20,58 @@ const Form:React.FC<Props> = ({setStep}) => {
   
 
   const Create = async () => {
-    setLoading(true)
-    try {
-      const response = await axios.post(`${url}/user/register`, {email, full_name, account_number,password});
-      console.log("Updated user data:", response.data);
-      setLoading(false)
-      setStep(1)
-    } catch (error) {
-      console.error("Error updating user data:", error);
+    setLoading(true);
+  
+    // Validate data
+    if (!email) {
+      alert('Email is required.');
+      setLoading(false);
+      return;
+    }
+  
+    else if (!full_name) {
+      alert('Full name is required.');
+      setLoading(false);
+      return;
+    }
+  
+    else if (!account_number) {
+      alert('Account number is required.');
+      setLoading(false);
+      return;
+    } else if (typeof account_number !== 'string' || account_number.length === 0) {
+      alert('Account number must be a string with at least one character.');
+      setLoading(false);
+      return;
+    }
+    else if (!/[a-zA-Z]+/.test(account_number)) {
+      alert('Account number must contain at least one letter (a-z or A-Z).');
+      setLoading(false);
+      return;
+    }
+  
+    else if (!password) {
+      alert('Password is required.');
+      setLoading(false);
+      return;
+    }
+  
+    // If validation passes, proceed with the API request
+    else{
+        try {
+          const response = await axios.post(`${url}/user/register`, {
+            email,
+            full_name,
+            account_number,
+            password,
+          });
+          console.log("Updated user data:", response.data);
+        } catch (error) {
+          console.error("Error updating user data:", error);
+        } finally {
+          setLoading(false);
+          setStep(1)
+        }
     }
   };
 
