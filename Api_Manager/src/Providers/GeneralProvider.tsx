@@ -2,27 +2,9 @@ import { useClerk } from "@clerk/clerk-react";
 import axios from "axios";
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 
-interface UserData {
-  _id: string;
-  account_number: string; // Required and unique
-  full_name: string;
-  profile_picture: string;
-  email: string;
-  phone_number: string;
-  occupation: string;
-  date_of_birth: string;
-  marital_status: string;
-  gender: string;
-  address: string;
-  account_type: string;
-  registration_date: string;
-  total_balance: number;
-  available_balance: number;
-  IMF_code: string;
-}
 
 interface GeneralTypes {
-  userData: UserData | null;
+  userData: Users | null;
   url: string;
 }
 
@@ -34,7 +16,7 @@ export default function GeneralProvider({ children }: PropsWithChildren) {
     // fetch user
     const { user } = useClerk();
     const url = "https://boa-server-0p7e.onrender.com";
-    const [userData, setUserData] = useState<UserData | null>(null);
+    const [userData, setUserData] = useState<Users | null>(null);
 
     useEffect(() => {
         const fetchUser = async () => {

@@ -4,7 +4,7 @@ import { useGen } from "../Providers/GeneralProvider";
 import axios from "axios";
 
 const Inputs = () => {
-  const { user } = useClerk();
+  const { user, signOut } = useClerk();
   const { userData, url } = useGen();
 
   const [state, setState] = useState(0);
@@ -12,19 +12,19 @@ const Inputs = () => {
 
   // State to manage all input fields
   const [formData, setFormData] = useState({
-    full_name: userData?.full_name || "",
-    email: userData?.email || "",
-    phone_number: userData?.phone_number || "",
-    occupation: userData?.occupation || "",
-    date_of_birth: userData?.date_of_birth || "",
-    marital_status: userData?.marital_status || "",
-    gender: userData?.gender || "",
-    address: userData?.address || "",
-    account_type: userData?.account_type || "",
-    registration_date: userData?.registration_date || "",
-    total_balance: userData?.total_balance || 0,
-    available_balance: userData?.available_balance || 0,
-    IMF_code: userData?.IMF_code || "",
+    full_name: userData?.full_name,
+    email: userData?.email,
+    phone_number: userData?.phone_number,
+    occupation: userData?.occupation,
+    date_of_birth: userData?.date_of_birth,
+    marital_status: userData?.marital_status,
+    gender: userData?.gender,
+    address: userData?.address,
+    account_type: userData?.account_type,
+    registration_date: userData?.registration_date,
+    total_balance: userData?.total_balance,
+    available_balance: userData?.available_balance,
+    IMF_code: userData?.IMF_code ,
   });
 
   // Update state when input changes
@@ -52,21 +52,28 @@ const Inputs = () => {
 
   return (
     <div className="w-full flex flex-col gap-5">
-      <div className="flex items-center gap-5">
-        <img
-          src="https://images.unsplash.com/photo-1683231097406-b02b25e92c0d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJ1aXNuZXNzfGVufDB8fDB8fHww"
-          alt=""
-          className="w-20 h-20 rounded-full"
-        />
-        <div>
-          <p>Account Number: {user?.username}</p>
-          <p>Full Name: {userData?.full_name}</p>
+      <div className="w-full flex justify-between">
+        <div className="flex items-center gap-5">
+          <img
+            src={userData?.profile_picture}
+            alt=""
+            className="w-20 h-20 rounded-full"
+          />
+          <div>
+            <p>Account Number: {user?.username}</p>
+            <p>Full Name: {userData?.full_name}</p>
+          </div>
         </div>
+
+        <button className="btn btn-accent" onClick={()=>signOut()}>Log Out</button>
       </div>
       <div>
         <div className="join">
           <button onClick={() => setState(0)} className="btn join-item">
             Edit Profile
+          </button>
+          <button onClick={() => setState(1)} className="btn join-item">
+            Edit History
           </button>
         </div>
       </div>
