@@ -21,7 +21,11 @@ mongoose.connection.on('connected',()=>{console.log('mongoDB connection establis
 mongoose.connection.on('error',()=>{console.log('connection error');})
 
 // middleware
-app.use(cors())
+app.use(cors({
+    origin: ['https://backend-zeta-livid-99.vercel.app/','http://localhost:5173/','https://boa-main.vercel.app/'], // Replace with your frontend's domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json())
 
 

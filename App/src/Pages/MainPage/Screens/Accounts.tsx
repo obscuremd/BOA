@@ -1,11 +1,24 @@
+import axios from "axios";
 import { transactions } from "../../../Exports/Constatants";
 import { useGen } from "../../../Providers/GeneralProvider";
 import Collapse from "../../../Ui/Collapse";
 import Hero from "../Components/AccountComponents/Hero";
 import List from "../Components/AccountComponents/List";
+import { useEffect, useState } from "react";
 
 const Accounts = () => {
   const { userData } = useGen();
+  const [history, setHistory] = useState<History[]>([])
+
+  useEffect(()=>{
+    const fetchUsers =async()=>{
+      const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+      setHistory(res.data)
+      console.log('data:',res.data)
+    }
+
+    fetchUsers()
+  },[])
 
   // Function to format the balance with commas
   const formatWithCommas = (balance: number) => {
@@ -26,7 +39,7 @@ const Accounts = () => {
         <Collapse primary1="Loans" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
         <Collapse primary1="Investments" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
       </div>
-      <List data={transactions} date={true} title={"Transactions"} />
+      <List data={history} date={true} title={"Transactions"} />
     </div>
   );
 };

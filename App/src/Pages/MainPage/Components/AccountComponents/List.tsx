@@ -2,16 +2,11 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 
 
-interface Transaction {
-  name: string;
-  date?: string;
-  amount: string;
-  type?: boolean;
-}
+
 
 interface Props {
   title: string;
-  data: Transaction[]; // Use the Transaction type for the data prop
+  data: History[]; // Use the Transaction type for the data prop
   date: boolean;
 }
 
@@ -31,7 +26,7 @@ const List: React.FC<Props> =({title, data, date}) => {
         {
           transactions && transactions.map((item, index)=>(
           <motion.div initial={{y:-20}} animate={{y:0}} exit={{y:-20}} key={index} style={{fontSize:"0.8rem"}} className={` py-2 px-4 rounded-xl flex justify-between w-full items-center border-[1px] border-blue-gray-900`}>
-            <p className='py-2 w-[50%]'>{item.name}</p>
+            <p className='py-2 w-[50%]'>{item.title}</p>
             {date && <p className='opacity-50'>{item.date}</p>}
             <p style={{color:item.type?'#4AC2B3':'#A13334'}}>{item.type?'Credit':'Debit'}</p>
             <p>${item.amount}</p>
