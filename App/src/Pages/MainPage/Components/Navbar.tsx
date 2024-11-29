@@ -1,10 +1,14 @@
 import { useClerk } from '@clerk/clerk-react'
 import logo from '../../../assets/logo copy.png'
+import { useGen } from '../../../Providers/GeneralProvider'
 
 const Navbar = () => {
 
   const {signOut} = useClerk()
+  const {userData} = useGen()
   
+  console.log(userData)
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 pl-2">
@@ -19,7 +23,7 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                src={userData?.profile_picture} />
             </div>
           </div>
           <ul
