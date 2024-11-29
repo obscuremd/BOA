@@ -10,18 +10,8 @@ const Menu = () => {
 
   return (
     <div className=' flex flex-col gap-2'>
-
         <Modal/>
         <SignInModal/>
-        <ul className="menu md:menu-vertical menu-horizontal bg-base-200 rounded-box md:w-56 w-full">
-          {/* {
-            users.map((item)=>(
-              <li>
-                <a>{item.full_name} {item.account_number}</a>
-              </li>
-            ))
-          } */}
-        </ul>
     </div>
   )
 }
@@ -85,6 +75,7 @@ const SignInModal =()=>{
                 <button className="btn w-full flex flex-col" onClick={showModal}>
                   <p>{item.full_name}</p>
                   <p>{item.account_number}</p>
+                  <p>{item.password}</p>
                 </button>
               ))
             }

@@ -1,6 +1,7 @@
 interface Users {
     _id: string;
     account_number: string; // Required and unique
+    password:string;
     full_name: string;
     profile_picture: string;
     email: string;
