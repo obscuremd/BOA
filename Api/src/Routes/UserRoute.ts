@@ -34,9 +34,14 @@ router.get('/:id', async (req, res) => {
 // find by email
 router.get('/account/:account', async (req, res) => {
 
+    const account = req.params.account.toLowerCase()
+
     try {
-        const user = await User.findOne({account_number: req.params.account});
-        res.status(200).json(user);
+        const user = await User.findOne({account_number: account});
+        (!user 
+            ?res.status(404).json({ message: 'User not found' })
+            :res.status(200).json(user)
+        )
     } catch (error) {
         res.status(500).json(error);
     }
