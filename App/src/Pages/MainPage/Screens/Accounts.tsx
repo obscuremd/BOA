@@ -10,13 +10,13 @@ const Accounts = () => {
   const [history, setHistory] = useState<History[]>([])
 
   useEffect(()=>{
-    const fetchUsers =async()=>{
+    const fetchHistory =async()=>{
       const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
       setHistory(res.data)
       console.log('data:',res.data)
     }
 
-    fetchUsers()
+    fetchHistory()
   },[])
 
   // Function to format the balance with commas

@@ -3,10 +3,26 @@ import Card from "../../../Component/Card"
 import { transactions } from "../../../Exports/Constatants"
 import List from "../Components/AccountComponents/List"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useGen } from "../../../Providers/GeneralProvider"
+import axios from "axios"
 
 const PayTransfer = () => {
 
   const navigate = useNavigate()
+
+  const { userData } = useGen();
+  const [history, setHistory] = useState<History[]>([])
+
+  useEffect(()=>{
+    const fetchHistory =async()=>{
+      const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+      setHistory(res.data)
+      console.log('data:',res.data)
+    }
+
+    fetchHistory()
+  },[])
 
   return (
     <div className="w-full flex flex-col justify-center">
@@ -38,7 +54,7 @@ const PayTransfer = () => {
                                     text={'Send and Request'}/>
                             </div>
       </div>
-      <List data={transactions} date={true} title={"Activity"} />
+      <List data={history} date={true} title={"Activity"} />
 
       <div>
 
