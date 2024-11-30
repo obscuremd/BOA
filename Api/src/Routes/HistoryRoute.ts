@@ -40,8 +40,10 @@ router.get("/:id", async (req, res) => {
 router.get("/user/:userId", async (req, res) => {
   try {
     const histories = await History.find({ userId: req.params.userId });
-    (histories.length === 0 && res.status(404).json("No history records found for the user") )
-    res.status(200).json(histories);
+    (histories.length === 0 
+       ?res.status(404).json("No history records found for the user") 
+       :res.status(200).json(histories)
+      )
   } catch (error) {
     console.error("Error fetching history records by userId:", error);
     res.status(500).json({

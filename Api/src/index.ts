@@ -35,6 +35,13 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
 app.use(express.json())
+app.use(express.static('public', {
+    setHeaders: (res, path, stat) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        }
+    }
+  }));
 
 
 // Routes
