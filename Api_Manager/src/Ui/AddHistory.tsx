@@ -11,7 +11,7 @@ const AddHistory = () => {
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
-    const [status, setStatus] = useState(false)
+    const [type, setType] = useState(false)
       
     const add =async()=>{
         setLoading(true)
@@ -21,7 +21,7 @@ const AddHistory = () => {
                 title,
                 amount,
                 date,
-                status
+                type
             }) 
             console.log('data:',res.data)
             setLoading(false)
@@ -75,8 +75,8 @@ const AddHistory = () => {
                         <option disabled selected>
                          Status
                         </option>
-                        <option onClick={()=>setStatus(true)}>Credit</option>
-                        <option onClick={()=>setStatus(false)}>Debit</option>
+                        <option onClick={()=>setType(true)}>Credit</option>
+                        <option onClick={()=>setType(false)}>Debit</option>
                         <option>Pending</option>
                     </select>
 
