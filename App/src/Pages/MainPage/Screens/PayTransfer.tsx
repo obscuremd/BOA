@@ -1,6 +1,5 @@
 import { DollarCircle, Internet, SendDollars } from "iconoir-react"
 import Card from "../../../Component/Card"
-import { transactions } from "../../../Exports/Constatants"
 import List from "../Components/AccountComponents/List"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
