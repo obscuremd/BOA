@@ -4,6 +4,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import UserRoute from './Routes/UserRoute'
 import HistoryRoute from './Routes/HistoryRoute'
+import helmet from 'helmet';
 
 dotenv.config()
 const app = express();
@@ -21,11 +22,18 @@ mongoose.connection.on('connected',()=>{console.log('mongoDB connection establis
 mongoose.connection.on('error',()=>{console.log('connection error');})
 
 // middleware
+app.use(helmet());
 app.use(cors({
-    origin: ['https://backend-zeta-livid-99.vercel.app','http://localhost:5173','https://boa-main.vercel.app'], // Replace with your frontend's domain
+    origin: (origin, callback) => {
+      if (!origin || ['https://backend-zeta-livid-99.vercel.app', 'http://localhost:5173', 'https://boa-main.vercel.app'].includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 app.use(express.json())
 
 
