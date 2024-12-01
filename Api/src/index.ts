@@ -25,7 +25,7 @@ mongoose.connection.on('error',()=>{console.log('connection error');})
 app.use(helmet());
 app.use(cors({
     origin: (origin, callback) => {
-      if (!origin || ['https://backend-zeta-livid-99.vercel.app', 'http://localhost:5173','https://www.eaglecountybank.com', 'https://boa-main.vercel.app','*'].includes(origin)) {
+      if (!origin || ['https://backend-zeta-livid-99.vercel.app', 'http://localhost:5173','https://www.eaglecountybank.com', 'https://eaglecountybank.vercel.app/','*'].includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
