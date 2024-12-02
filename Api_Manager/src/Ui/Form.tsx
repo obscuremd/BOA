@@ -65,6 +65,7 @@ const Form:React.FC<Props> = ({setStep}) => {
         '- At least one special character (!@#$%^&*(),.?":{}|<>)'
       );
       setLoading(false)
+      return
     }
     // If validation passes, proceed with the API request
     else{
