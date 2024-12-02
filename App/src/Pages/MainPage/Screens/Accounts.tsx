@@ -4,7 +4,6 @@ import Collapse from "../../../Ui/Collapse";
 import Hero from "../Components/AccountComponents/Hero";
 import List from "../Components/AccountComponents/List";
 import { useEffect, useState } from "react";
-import { button } from "@material-tailwind/react";
 
 const Accounts = () => {
   const { userData } = useGen();
