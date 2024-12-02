@@ -47,7 +47,7 @@ const Accounts = () => {
         <Collapse primary1="Investments" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
       </div>
       {loading
-          ?<button className="btn w-full"> History loading</button>
+          ?<button className="btn w-full"> History loading . . .</button>
           :<List data={history} date={true} title={"Transactions"} />}
     </div>
   );
