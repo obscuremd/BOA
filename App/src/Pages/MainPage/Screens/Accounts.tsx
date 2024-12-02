@@ -4,16 +4,24 @@ import Collapse from "../../../Ui/Collapse";
 import Hero from "../Components/AccountComponents/Hero";
 import List from "../Components/AccountComponents/List";
 import { useEffect, useState } from "react";
+import { button } from "@material-tailwind/react";
 
 const Accounts = () => {
   const { userData } = useGen();
   const [history, setHistory] = useState<History[]>([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
     const fetchHistory =async()=>{
-      const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
-      setHistory(res.data)
-      console.log('data:',res.data)
+      setLoading(true)
+      try {
+        const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+        setHistory(res.data)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+
     }
 
     fetchHistory()
@@ -38,7 +46,9 @@ const Accounts = () => {
         <Collapse primary1="Loans" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
         <Collapse primary1="Investments" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
       </div>
-      <List data={history} date={true} title={"Transactions"} />
+      {loading
+          ?<button className="btn w-full"> History loading</button>
+          :<List data={history} date={true} title={"Transactions"} />}
     </div>
   );
 };
