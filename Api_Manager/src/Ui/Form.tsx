@@ -20,6 +20,7 @@ const Form:React.FC<Props> = ({setStep}) => {
   
 
   const Create = async () => {
+    const passwordStrengthRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
     setLoading(true);
   
     // Validate data
@@ -55,7 +56,16 @@ const Form:React.FC<Props> = ({setStep}) => {
       setLoading(false);
       return;
     }
-  
+    else if (!passwordStrengthRegex.test(password)) {
+      alert(
+        'Password must be at least 8 characters long and contain:\n' +
+        '- At least one uppercase letter\n' +
+        '- At least one lowercase letter\n' +
+        '- At least one number\n' +
+        '- At least one special character (!@#$%^&*(),.?":{}|<>)'
+      );
+      setLoading(false)
+    }
     // If validation passes, proceed with the API request
     else{
         try {
