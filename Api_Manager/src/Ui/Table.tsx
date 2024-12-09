@@ -7,11 +7,11 @@ import { Xmark } from "iconoir-react"
 const Table = () => {
 
     const [history , setHistory] = useState<History[]>([])
-    const{userData} = useGen()
+    const{userData, url} = useGen()
 
     useEffect(()=>{
         const fetchUsers =async()=>{
-          const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+          const res = await axios.get(`${url}/history/user/${userData?._id}`) 
           setHistory(res.data)
           console.log('data:',res.data)
         }
@@ -25,7 +25,7 @@ const Table = () => {
             // Optimistic update: Remove the item from the UI immediately
             setHistory(history.filter((item) => item._id !== id));
       
-            await axios.delete(`https://boa-server-0p7e.onrender.com/history/${id}`);
+            await axios.delete(`${url}/history/${id}`);
       
             // If successful, the item is removed from the server and the UI update is permanent.
             // If an error occurs, you can revert the UI update or display an error message.
