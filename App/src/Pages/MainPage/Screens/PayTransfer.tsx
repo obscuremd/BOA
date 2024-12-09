@@ -10,12 +10,12 @@ const PayTransfer = () => {
 
   const navigate = useNavigate()
 
-  const { userData } = useGen();
+  const { userData, url } = useGen();
   const [history, setHistory] = useState<History[]>([])
 
   useEffect(()=>{
     const fetchHistory =async()=>{
-      const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+      const res = await axios.get(`${url}/history/user/${userData?._id}`) 
       setHistory(res.data)
       console.log('data:',res.data)
     }

@@ -8,16 +8,24 @@ const Transfers = () => {
 
     const navigate = useNavigate()
 
-    const {amount, from, to, setAmount, setFrom, setTo} = useGen()
+    const {amount, from, to, setAmount, setFrom, setTo, userData} = useGen()
 
     const [index, setIndex] = useState(0)
 
     const [loading, setLoading] = useState(false)
 
+    const formatWithCommas = (balance: number) => {
+        if (!balance || balance <= 0) return "0";
+        return balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      };
+    
+      // Format the total and available balances
+      const formattedAvailableBalance = formatWithCommas(userData?.available_balance || 0);
+
     const data1 = [
-        ['Checking - 023456789','Available balance - $5,000.00'],
-        ['Savings - 023456789','Available balance - $5,000.00'],
-        ['Visa Signature - 023456789','Available balance - $5,000.00'],
+        [`Checking - ${userData?.account_number}`,`Available balance - $${formattedAvailableBalance}`],
+        [`Savings - ${userData?.account_number}`,`Available balance - $${formattedAvailableBalance}`],
+        [`Visa Signature - ${userData?.account_number}`,`Available balance - $${formattedAvailableBalance}`],
     ]
 
     const confirm = () =>{

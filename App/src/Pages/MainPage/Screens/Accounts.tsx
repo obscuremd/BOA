@@ -6,7 +6,7 @@ import List from "../Components/AccountComponents/List";
 import { useEffect, useState } from "react";
 
 const Accounts = () => {
-  const { userData } = useGen();
+  const { userData, url } = useGen();
   const [history, setHistory] = useState<History[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -14,7 +14,7 @@ const Accounts = () => {
     const fetchHistory =async()=>{
       setLoading(true)
       try {
-        const res = await axios.get(`https://boa-server-0p7e.onrender.com/history/user/${userData?._id}`) 
+        const res = await axios.get(`${url}/history/user/${userData?._id}`) 
         setHistory(res.data)
         setLoading(false)
       } catch (error) {
