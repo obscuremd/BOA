@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Plus } from 'iconoir-react'
 import { useEffect, useState } from 'react'
 import Form from './Form'
+import { useGen } from '../Providers/GeneralProvider'
 
 const Menu = () => {
 
@@ -47,10 +48,11 @@ const Modal =()=>{
 const SignInModal =()=>{
 
   const [users, setUsers] = useState<Users[]>([])
+  const {url} = useGen()
 
   useEffect(()=>{
     const fetchUsers =async()=>{
-      const res = await axios.get('https://boa-server-0p7e.onrender.com/user/') 
+      const res = await axios.get(`${url}/user/`) 
       setUsers(res.data)
       console.log('data:',res.data)
     }

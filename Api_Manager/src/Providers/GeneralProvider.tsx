@@ -15,7 +15,7 @@ export default function GeneralProvider({ children }: PropsWithChildren) {
 
     // fetch user
     const { user } = useClerk();
-    const url = "https://boa-server-0p7e.onrender.com";
+    const url = "https://boa-7mml.vercel.app";
     const [userData, setUserData] = useState<Users | null>(null);
 
     useEffect(() => {
