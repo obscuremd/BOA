@@ -71,7 +71,7 @@ const Inputs = () => {
       </div>
       {state === 0 && (
         <>
-          <div className="flex gap-5 w-full">
+          <div className="flex flex-col md:flex-row gap-5 w-full">
             {/* input 1 */}
             <div className="flex flex-col gap-5 w-full">
                     

@@ -36,6 +36,9 @@ const Modal =()=>{
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+              Please wait for till you see other created accounts before creating a new one
+              <br/>it may take a bit to get them for you
+
           </form>
           {step ===1 && <SignUp/>}
           {step ===0 && <Form setStep={setStep}/>}
@@ -90,7 +93,7 @@ const SignInModal =()=>{
                   </div>
                 </div>
               ))
-            }
+             }
             
       </div>
       
