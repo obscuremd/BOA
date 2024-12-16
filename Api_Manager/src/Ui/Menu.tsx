@@ -69,24 +69,38 @@ const SignInModal =()=>{
   };
   return(
     <div>
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-wrap gap-5'>
+        
         {
               users.map((item)=>(
-                <button className="btn flex flex-col" onClick={showModal}>
-                  <p>full name: {item.full_name}</p>
-                  <p>account number: {item.account_number}</p>
-                  <p>password: {item.password}</p>
-                </button>
+                <div className="card bg-base-100 w-96 shadow-xl">
+                  <figure>
+                    <img
+                      className='w-96 h-32 object-cover'
+                      src={item.profile_picture}
+                      alt="Shoes" />
+                  </figure>
+                  <div className="card-body">
+                    <h2 className="card-title">full name: {item.full_name}</h2>
+                    <p>account number: {item.account_number}</p>
+                    <p>password: {item.password}</p>
+                    <div className="card-actions justify-end">
+                      <button className="btn btn-primary w-full" onClick={showModal}>Edit Account</button>
+                    </div>
+                  </div>
+                </div>
               ))
             }
+            
       </div>
       
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box">
+        <div className="modal-box flex flex-col items-center gap-5">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button className="btn btn-sm btn-circle btn-ghost ">✕</button>
           </form>
+          <p>Login using the Details you saved to edit the account</p>
           <SignIn/>
         </div>
       </dialog>
