@@ -11,6 +11,7 @@ const Menu = () => {
   const [users, setUsers] = useState<Users[]>([])
   const {url} = useGen()
 
+  const{setUserData} = useGen()
 
 
   const showModal = () => {
@@ -31,7 +32,7 @@ const Menu = () => {
   },[])
 
   return (
-    <div className=' flex flex-col gap-2'>
+    <div className=' flex overflow-scroll md:overflow-hidden md:flex-col gap-2'>
         <div>
           <button className="btn w-full" onClick={showModal}>
             <Plus/>
@@ -49,9 +50,13 @@ const Menu = () => {
         </div>
         {
               users.map((item)=>(
-                <button className="avatar">
-                    <div className="mask mask-hexagon w-12">
+                <button className="btn btn-primary flex flex-col" onClick={()=>setUserData(item)}>
+                    <div className="mask mask-hexagon w-6">
                       <img src={item.profile_picture} />
+                    </div>
+                    <div>
+                      <p className='text-nowrap'>{item.full_name}</p>
+                      <p>{item.account_number}</p>
                     </div>
                 </button>
               ))

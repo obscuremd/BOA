@@ -5,6 +5,7 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 
 interface GeneralTypes {
   userData: Users | null;
+  setUserData:React.Dispatch<React.SetStateAction<Users| null>>
   url: string;
 }
 
@@ -14,27 +15,11 @@ export default function GeneralProvider({ children }: PropsWithChildren) {
   
 
     // fetch user
-    const { user } = useClerk();
     const url = "https://boa-7mml.vercel.app";
     const [userData, setUserData] = useState<Users | null>(null);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-        if (!user?.username) return; // Handle missing username
-
-        try {
-            const response = await axios.get(`${url}/user/account/${user.username}`);
-            setUserData(response.data);
-        } catch (error) {
-            console.error("Error fetching user data:", error); // Log any errors
-        }
-        };
-
-        fetchUser();
-    }, [user?.username]); // Add user?.username as a dependency
-
   return (
-    <GeneralContext.Provider value={{ userData, url }}>
+    <GeneralContext.Provider value={{ userData, url, setUserData }}>
       {children}
     </GeneralContext.Provider>
   );

@@ -12,9 +12,11 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
     setTo : React.Dispatch<React.SetStateAction<Array<string>>>, 
     amount: string, 
     setAmount: React.Dispatch<React.SetStateAction<string>>
+    
 
 
     userData: Users | null;
+    setUserData: React.Dispatch<React.SetStateAction<Users | null>>
     url: string;
   }
 
@@ -32,23 +34,10 @@ export default function GeneralProvider({children}:PropsWithChildren) {
     const url = "https://boa-7mml.vercel.app";
     const [userData, setUserData] = useState<Users| null>(null);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-        if (!user?.username) return; // Handle missing username
-
-        try {
-            const response = await axios.get(`${url}/user/account/${user.username}`);
-            setUserData(response.data);
-        } catch (error) {
-            console.error("Error fetching user data:", error); // Log any errors
-        }
-        };
-
-        fetchUser();
-    }, [user?.username]); // Add user?.username as a dependency
+    
 
     return(
-        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData, url}}>
+        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData,setUserData, url}}>
             {children}
         </GeneralContext.Provider>
     )

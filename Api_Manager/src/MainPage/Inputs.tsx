@@ -56,8 +56,6 @@ const Inputs = () => {
     <div className="w-full flex flex-col gap-5">
       <div className="w-full flex justify-between">
         <UploadImage/>
-
-        <button className="btn btn-accent" onClick={()=>signOut()}>Log Out</button>
       </div>
       <div>
         <div className="join">

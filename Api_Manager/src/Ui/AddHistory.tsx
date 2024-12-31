@@ -4,7 +4,7 @@ import { useGen } from '../Providers/GeneralProvider'
 
 const AddHistory = () => {
 
-    const {userData} = useGen()
+    const {userData,url} = useGen()
 
     const [loading, setLoading] = useState(false)
 
@@ -16,7 +16,7 @@ const AddHistory = () => {
     const add =async()=>{
         setLoading(true)
         try {
-            const res = await axios.post('https://boa-server-0p7e.onrender.com/history/create',{
+            const res = await axios.post(`${url}/history/create`,{
                 userId:userData?._id,
                 title,
                 amount,

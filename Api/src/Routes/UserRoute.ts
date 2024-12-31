@@ -13,7 +13,7 @@ const router = Router();
 router.post("/register", register);
 
 // login
-router.get("/login", login);
+router.post("/login", login);
 
 // update user
 router.put("/:id", update);
