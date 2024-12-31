@@ -77,11 +77,12 @@ const Form:React.FC<Props> = ({setStep}) => {
             password,
           });
           console.log("Updated user data:", response.data);
-        } catch (error) {
-          console.error("Error updating user data:", error);
-        } finally {
           setLoading(false);
           setStep(1)
+        } catch (error) {
+          console.error("Error updating user data:", error);
+          alert('error')
+          setLoading(false)
         }
     }
   };

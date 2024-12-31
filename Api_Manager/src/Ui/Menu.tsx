@@ -40,8 +40,8 @@ const Modal =()=>{
               <br/>it may take a bit to get them for you
 
           </form>
-          {step ===1 && <SignUp/>}
           {step ===0 && <Form setStep={setStep}/>}
+          {step ===1 && <SignUp/>}
         </div>
       </dialog>
     </div>

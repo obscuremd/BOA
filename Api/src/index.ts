@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import UserRoute from "./Routes/UserRoute";
 import HistoryRoute from "./Routes/HistoryRoute";
 import helmet from "helmet";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
@@ -38,7 +39,6 @@ app.use(
           "http://localhost:5173",
           "https://www.eaglecountybank.com",
           "https://eaglecountybank.vercel.app",
-          "*",
         ].includes(origin)
       ) {
         callback(null, true);
@@ -48,9 +48,11 @@ app.use(
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Allow cookies and credentials
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   express.static("public", {
     setHeaders: (res, path, stat) => {
