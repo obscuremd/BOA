@@ -2,7 +2,7 @@ import mongoose, { models } from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    account_number: { type: String, required: true, unique: true },
+    account_number: { type: String, required: true },
     full_name: { type: String, default: "" },
     password: { type: String, default: "" },
     profile_picture: {
