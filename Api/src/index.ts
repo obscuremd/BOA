@@ -54,15 +54,15 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  express.static("public", {
-    setHeaders: (res, path, stat) => {
-      if (path.endsWith(".js")) {
-        res.setHeader("Content-Type", "application/javascript");
-      }
-    },
-  })
-);
+// app.use(
+//   express.static("public", {
+//     setHeaders: (res, path, stat) => {
+//       if (path.endsWith(".js")) {
+//         res.setHeader("Content-Type", "application/javascript");
+//       }
+//     },
+//   })
+// );
 
 // Routes
 app.get("/", (req, res) => {
