@@ -1,10 +1,5 @@
-import { useClerk } from "@clerk/clerk-react";
-import axios from "axios";
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 
-
-
-  
   interface GeneralTypes {
     from: Array<string>, 
     setFrom :  React.Dispatch<React.SetStateAction<Array<string>>>,
@@ -30,7 +25,6 @@ export default function GeneralProvider({children}:PropsWithChildren) {
 
 
     // fetch user
-    const { user } = useClerk();
     const url = "https://boa-7mml.vercel.app";
     const [userData, setUserData] = useState<Users| null>(null);
 
