@@ -13,11 +13,18 @@ const Auth = () => {
   const [account_number, set_account_number] = useState('')
   const [password, set_password] = useState('')
 
+  const[loading,setLoading] = useState(false)
+
   const Login =async()=>{
+    setLoading(true)
     try {
       const response = await axios.post(`${url}/user/login`,{account_number,password})
+      setLoading(false)
+      alert('logged in successfully')
       console.log(response)
     } catch (error) {
+      alert('error logging in')
+      setLoading(false)
       console.log(error)
     }
   }
@@ -34,9 +41,13 @@ const Auth = () => {
             </label>
             <label className="input input-bordered flex items-center gap-2">
               <Key/>
-              <input type="password" className="grow" value="password" onChange={(e)=>set_password(e.target.value)} />
+              <input type="password" className="grow" placeholder='password' onChange={(e)=>set_password(e.target.value)} />
             </label>
-            <button className="btn btn-primary" onClick={Login}>Login</button>
+            <button className="btn btn-primary" onClick={Login}>
+              {loading 
+              ?<span className="loading loading-spinner loading-lg"></span>
+              :'Login'}
+            </button>
           </div>
         </div>
         {IsMobile && 
