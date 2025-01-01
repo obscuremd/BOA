@@ -8,6 +8,8 @@ import axios from 'axios';
 
 function App() {
 
+  axios.defaults.withCredentials = true;
+
   const{url, setUserData} = useGen()
   const [auth,setAuth] = useState(false)
   const [loading,setLoading] = useState(false)
