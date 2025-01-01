@@ -8,6 +8,8 @@ import axios from 'axios'
 
 const Auth = () => {
 
+  axios.defaults.withCredentials = true;
+
   const {url} = useGen()
 
   const [account_number, set_account_number] = useState('')
