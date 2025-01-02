@@ -1,4 +1,3 @@
-import { useClerk } from "@clerk/clerk-react";
 import { useState, ChangeEvent } from "react";
 import { useGen } from "../Providers/GeneralProvider";
 import axios from "axios";
@@ -6,7 +5,6 @@ import Table from "../Ui/Table";
 import UploadImage from "../Ui/UploadImage";
 
 const Inputs = () => {
-  const { signOut } = useClerk();
   const { userData, url } = useGen();
 
   const [state, setState] = useState(0);

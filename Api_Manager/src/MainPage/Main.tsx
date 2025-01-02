@@ -1,4 +1,3 @@
-import { SignedIn, SignedOut} from "@clerk/clerk-react"
 import Menu from "../Ui/Menu"
 import Inputs from "./Inputs"
 
