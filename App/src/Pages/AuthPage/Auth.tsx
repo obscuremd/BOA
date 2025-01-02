@@ -17,7 +17,6 @@ const Auth = () => {
   const[loading,setLoading] = useState(false)
 
   const Login =async()=>{
-    axios.defaults.withCredentials = true;
     setLoading(true)
     try {
       const response = await axios.post(`${url}/user/login`,{account_number,password},{withCredentials:true})

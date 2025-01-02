@@ -1,6 +1,5 @@
 import React from 'react';
 import Logo from '../assets/logo white copy.png'
-import { useClerk } from '@clerk/clerk-react';
 import { useGen } from '../Providers/GeneralProvider';
 
 interface CollapseProps {
