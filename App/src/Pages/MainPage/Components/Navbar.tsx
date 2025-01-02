@@ -1,14 +1,10 @@
-import { useClerk } from '@clerk/clerk-react'
 import logo from '../../../assets/logo copy.png'
 import { useGen } from '../../../Providers/GeneralProvider'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
-  const {signOut} = useClerk()
-  const {userData} = useGen()
-  
-  console.log(userData)
+  const {userData, logout} = useGen()
 
   return (
     <div className="navbar bg-base-100">
@@ -37,7 +33,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li><a>Settings</a></li>
-            <li><a onClick={()=>signOut()}>Logout</a></li>
+            <li><a onClick={logout}>Logout</a></li>
           </ul>
         </div>
       </div>

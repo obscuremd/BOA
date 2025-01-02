@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 
   interface GeneralTypes {
@@ -8,7 +9,7 @@ import { createContext, PropsWithChildren, useContext, useState } from "react";
     amount: string, 
     setAmount: React.Dispatch<React.SetStateAction<string>>
     
-
+    logout:()=>void
 
     userData: Users | null;
     setUserData: React.Dispatch<React.SetStateAction<Users | null>>
@@ -31,10 +32,15 @@ export default function GeneralProvider({children}:PropsWithChildren) {
     const [userData, setUserData] = useState<Users| null>(null);
     const [history, setHistory] = useState<History[]>([])
 
+    const logout =async()=>{
+      const response = axios.post(`${url}/user/logout`)
+      console.log(response)
+  }
+
     
 
     return(
-        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData,setUserData, url, history, setHistory}}>
+        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData,setUserData, url, history, setHistory,logout}}>
             {children}
         </GeneralContext.Provider>
     )

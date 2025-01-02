@@ -4,6 +4,7 @@ import {
   checkAuth,
   deletes,
   login,
+  logout,
   register,
   update,
 } from "../Helpers/auth.controler";
@@ -22,6 +23,8 @@ router.put("/:id", update);
 router.delete("/:id", deletes);
 
 router.get("/check-auth", checkAuth);
+
+router.post("/logout", logout);
 
 // find by email
 router.get("/", async (req, res) => {
