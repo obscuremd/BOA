@@ -10,7 +10,7 @@ function App() {
 
   axios.defaults.withCredentials = true;
 
-  const{url, setUserData} = useGen()
+  const{url, setUserData, setHistory} = useGen()
   const [auth,setAuth] = useState(false)
   const [loading,setLoading] = useState(false)
 
@@ -20,9 +20,13 @@ function App() {
           try {
               setLoading(false)
               const response = await axios.get(`${url}/user/check-auth`);
-              console.log('auth:',response)
               setAuth(response.data.success)
-              setUserData(response.data);
+              setUserData(response.data.user);
+
+              const res = await axios.get(`${url}/history/user/${response.data.user._id}`) 
+              setHistory(res.data)
+              setLoading(false)
+      
           } catch (error) {
               setLoading(false)
               console.error("Error fetching user data:", error); // Log any errors

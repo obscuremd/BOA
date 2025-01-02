@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../assets/logo white copy.png'
 import { useClerk } from '@clerk/clerk-react';
+import { useGen } from '../Providers/GeneralProvider';
 
 interface CollapseProps {
     primary1:string,
@@ -10,7 +11,7 @@ interface CollapseProps {
 
 const Collapse:React.FC<CollapseProps> = ({primary1, primary2, secondary }) => {
 
-  const {user} = useClerk()
+  const {userData} = useGen()
 
   return (
     <div
@@ -28,12 +29,12 @@ const Collapse:React.FC<CollapseProps> = ({primary1, primary2, secondary }) => {
 
                   <div className="py-5 flex flex-col gap-5">
                     <div className="flex justify-between">
-                      <p>My Checking - {user?.username}</p>
+                      <p>My Checking - {userData?.account_number}</p>
                       <p>${secondary}</p>
                     </div>
                     <hr className="h-[1px] bg-gray-200" />
                     <div className="flex justify-between">
-                      <p>My Checking - {user?.username}</p>
+                      <p>My Checking - {userData?.account_number}</p>
                       <p>${secondary}</p>
                     </div>
                   </div>

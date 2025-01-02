@@ -9,6 +9,7 @@ import Transfers from './Screens/Transfers'
 import PayBills from './Screens/PayBills'
 import WireTransfers from './Screens/WireTransfers'
 import Zelle from './Screens/Zelle'
+import Profile from './Screens/Profile'
 
 const Main = () => {
   return (
@@ -20,6 +21,8 @@ const Main = () => {
               <Route path='/transfer' element={<PayTransfer/>}/>
               <Route path='/deposit-checks' element={<DepositChecks/>}/>
               <Route path='/trade' element={<Trade/>}/>
+              
+              <Route path='/profile' element={<Profile/>}/>
               
               <Route path='/transfers' element={<Transfers/>}/>
               <Route path='/bills' element={<PayBills/>}/>

@@ -36,12 +36,13 @@ export const login = async (req: Request, res: Response) => {
     else if (password !== user.password)
       res.status(404).json({ success: false, message: "password mismatch" });
     else {
+      generateToken(res, user._id);
+
       res.status(200).json({
         success: true,
         message: "user logged in successfully",
         user,
       });
-      generateToken(res, user._id);
     }
   } catch (error) {
     res.status(500).json(error);

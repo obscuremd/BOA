@@ -5,7 +5,10 @@ import App from './App.tsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { app } from './firebaseConfig.ts'
 import GeneralProvider from './Providers/GeneralProvider.tsx'
+import axios from 'axios'
 app
+
+axios.defaults.withCredentials = true;
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY

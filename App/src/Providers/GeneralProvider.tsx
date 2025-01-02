@@ -12,6 +12,8 @@ import { createContext, PropsWithChildren, useContext, useState } from "react";
 
     userData: Users | null;
     setUserData: React.Dispatch<React.SetStateAction<Users | null>>
+    history: History[];
+    setHistory: React.Dispatch<React.SetStateAction<History[]>>
     url: string;
   }
 
@@ -27,11 +29,12 @@ export default function GeneralProvider({children}:PropsWithChildren) {
     // fetch user
     const url = "https://boa-7mml.vercel.app";
     const [userData, setUserData] = useState<Users| null>(null);
+    const [history, setHistory] = useState<History[]>([])
 
     
 
     return(
-        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData,setUserData, url}}>
+        <GeneralContext.Provider value={{from, setFrom,to, setTo, amount, setAmount, userData,setUserData, url, history, setHistory}}>
             {children}
         </GeneralContext.Provider>
     )

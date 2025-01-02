@@ -8,7 +8,6 @@ import axios from 'axios'
 
 const Auth = () => {
 
-  axios.defaults.withCredentials = true;
 
   const {url} = useGen()
 
@@ -18,9 +17,10 @@ const Auth = () => {
   const[loading,setLoading] = useState(false)
 
   const Login =async()=>{
+    axios.defaults.withCredentials = true;
     setLoading(true)
     try {
-      const response = await axios.post(`${url}/user/login`,{account_number,password})
+      const response = await axios.post(`${url}/user/login`,{account_number,password},{withCredentials:true})
       setLoading(false)
       alert('logged in successfully')
       console.log(response)

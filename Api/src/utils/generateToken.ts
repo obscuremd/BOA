@@ -20,5 +20,6 @@ export const generateToken = (res: Response, userId: string) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
+  console.log("Cookie sent:", token);
   return token;
 };

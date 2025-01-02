@@ -1,30 +1,12 @@
-import axios from "axios";
 import { useGen } from "../../../Providers/GeneralProvider";
 import Collapse from "../../../Ui/Collapse";
 import Hero from "../Components/AccountComponents/Hero";
 import List from "../Components/AccountComponents/List";
-import { useEffect, useState } from "react";
 
 const Accounts = () => {
-  const { userData, url } = useGen();
-  const [history, setHistory] = useState<History[]>([])
-  const [loading, setLoading] = useState(false)
+  const { userData, history } = useGen();
+  
 
-  useEffect(()=>{
-    const fetchHistory =async()=>{
-      setLoading(true)
-      try {
-        const res = await axios.get(`${url}/history/user/${userData?._id}`) 
-        setHistory(res.data)
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-      }
-
-    }
-
-    fetchHistory()
-  },[])
 
   // Function to format the balance with commas
   const formatWithCommas = (balance: number) => {
@@ -45,9 +27,7 @@ const Accounts = () => {
         <Collapse primary1="Loans" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
         <Collapse primary1="Investments" primary2={formattedTotalBalance} secondary={formattedAvailableBalance} />
       </div>
-      {loading
-          ?<button className="btn w-full"> History loading . . .</button>
-          :<List data={history} date={true} title={"Transactions"} />}
+      <List data={history} date={true} title={"Transactions"} />
     </div>
   );
 };
