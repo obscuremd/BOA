@@ -1,17 +1,12 @@
-import axios from 'axios'
 import { Plus } from 'iconoir-react'
-import { useEffect, useState } from 'react'
 import Form from './Form'
 import { useGen } from '../Providers/GeneralProvider'
 
 const Menu = () => {
 
   // constants
-  const [users, setUsers] = useState<Users[]>([])
-  const {url} = useGen()
-
-  const{setUserData} = useGen()
-
+  
+  const { setUserData, users} = useGen()
 
   const showModal = () => {
     const modal = document.getElementById('my_modal_3') as HTMLDialogElement;
@@ -20,15 +15,7 @@ const Menu = () => {
     }
   };
 
-  useEffect(()=>{
-    const fetchUsers =async()=>{
-      const res = await axios.get(`${url}/user/`) 
-      setUsers(res.data)
-      console.log('data:',res.data)
-    }
 
-    fetchUsers()
-  },[])
 
   return (
     <div className=' flex overflow-scroll md:overflow-hidden md:flex-col gap-2'>
