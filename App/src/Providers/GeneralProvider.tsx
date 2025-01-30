@@ -33,8 +33,14 @@ export default function GeneralProvider({children}:PropsWithChildren) {
     const [history, setHistory] = useState<History[]>([])
 
     const logout =async()=>{
-      const response = axios.post(`${url}/user/logout`)
-      console.log(response)
+      try {
+        const response = await axios.post(`${url}/user/logout`,{withCredentials:true})
+        console.log(response)
+        alert('Logged Out Successfully')
+      } catch (error) {
+        console.log(error)
+        alert('error Logging out')
+      }
   }
 
     
