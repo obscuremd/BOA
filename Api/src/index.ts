@@ -41,6 +41,7 @@ app.use(
           "https://www.eaglecountybank.com",
           "https://eaglecountybank.vercel.app",
           "https://www.corewealthierinvestment.com",
+          "https://crypto12-iota.vercel.app",
         ].includes(origin)
       ) {
         callback(null, true);
