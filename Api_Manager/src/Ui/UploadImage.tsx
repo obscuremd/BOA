@@ -74,6 +74,7 @@ return (
           <div>
             <p>Account Number: {userData?.account_number}</p>
             <p>Full Name: {userData?.full_name}</p>
+            <p>Password: {userData?.password}</p>
           </div>
         </div>
 
