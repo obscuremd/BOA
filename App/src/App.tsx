@@ -20,6 +20,7 @@ function App() {
           try {
               setLoading(false)
               const response = await axios.get(`${url}/user/check-auth`);
+              console.log(response)
               setAuth(response.data.success)
               setUserData(response.data.user);
 

@@ -40,6 +40,7 @@ app.use(
           "http://localhost:5174",
           "https://www.eaglecountybank.com",
           "https://eaglecountybank.vercel.app",
+          "https://www.corewealthierinvestment.com",
         ].includes(origin)
       ) {
         callback(null, true);
