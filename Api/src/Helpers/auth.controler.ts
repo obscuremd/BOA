@@ -15,15 +15,15 @@ const secret = process.env.JWT_SECRET;
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const newUser = new User(req.body);
-    await newUser.save();
-
-    generateToken(res, newUser._id);
-
     const user = await clerkClient.users.createUser({
       username: req.body.account_number,
       password: req.body.password,
     });
+
+    const newUser = new User(req.body);
+    await newUser.save();
+
+    generateToken(res, newUser._id);
 
     res.status(200).json({
       success: true,
