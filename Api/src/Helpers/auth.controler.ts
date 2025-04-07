@@ -3,8 +3,13 @@ import User from "../Models/UserModel";
 import { generateToken } from "../utils/generateToken";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { Clerk } from "@clerk/clerk-sdk-node";
 
 dotenv.config();
+
+const clerkClient = Clerk({
+  apiKey: process.env.CLERK_SECRET_KEY,
+});
 
 const secret = process.env.JWT_SECRET;
 
@@ -15,9 +20,15 @@ export const register = async (req: Request, res: Response) => {
 
     generateToken(res, newUser._id);
 
+    const user = await clerkClient.users.createUser({
+      username: req.body.account_number,
+      password: req.body.password,
+    });
+
     res.status(200).json({
       success: true,
       message: "user created successfully",
+      clerkUser: user,
       newUser,
     });
   } catch (error) {

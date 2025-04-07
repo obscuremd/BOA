@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
       default:
         "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-profile-picture-business-profile-woman-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-1325.jpg?semt=ais_hybrid",
     },
-    email: { type: String, default: "" },
+    email: { type: String },
     phone_number: { type: String, default: "" },
     occupation: { type: String, default: "" },
     date_of_birth: { type: String }, // Use `Date` for dates
