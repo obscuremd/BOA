@@ -6,6 +6,8 @@ import { SignedIn, SignedOut } from '@clerk/clerk-react'
 
 function App() {
 
+
+
   return (
     <div className='font-connections'>
       <SignedIn>

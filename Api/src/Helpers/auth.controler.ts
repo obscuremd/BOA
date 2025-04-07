@@ -38,16 +38,16 @@ export const register = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   const account = req.body.account_number;
-  const password = req.body.password;
+  // const password = req.body.password;
 
   try {
     const user = await User.findOne({ account_number: account });
     if (!user)
       res.status(404).json({ success: false, message: "User not found" });
-    else if (password !== user.password)
-      res.status(404).json({ success: false, message: "password mismatch" });
+    // else if (password !== user.password)
+    //   res.status(404).json({ success: false, message: "password mismatch" });
     else {
-      generateToken(res, user._id);
+      // generateToken(res, user._id);
 
       res.status(200).json({
         success: true,
